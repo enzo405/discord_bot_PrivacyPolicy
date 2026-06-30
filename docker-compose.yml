@@ -2,7 +2,8 @@ services:
   discord-bots-privacy:
     image: nginx:alpine
     volumes:
-      - .:/usr/share/nginx/html:ro
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./bots:/usr/share/nginx/html/bots
     labels:
       - traefik.enable=true
       - traefik.http.routers.bots-privacy.rule=Host(`bots-privacy.luhcaran.fr`)
