@@ -1,0 +1,1 @@
+# Discord Bots — Privacy Policies

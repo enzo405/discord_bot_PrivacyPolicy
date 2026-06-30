@@ -1,0 +1,18 @@
+services:
+  discord-bots-privacy:
+    image: nginx:alpine
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./bots:/usr/share/nginx/html/bots
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.bots-privacy.rule=Host(`bots-privacy.luhcaran.fr`)
+      - traefik.http.routers.bots-privacy.entrypoints=websecure
+      - traefik.http.routers.bots-privacy.tls.certresolver=letsencryptresolver
+      - traefik.http.services.bots-privacy.loadbalancer.server.port=80
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
